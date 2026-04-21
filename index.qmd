@@ -1,0 +1,11 @@
+# Prefacio {.unnumbered}
+
+Rust puede ser descargado desde su [sitio oficial](https://rust-lang.org/es/tools/install/). Es lo suficientemente listo como para saber cuál es nuestro sistema y nos sugerirá el mejor modo de instalación.
+
+El proceso es bastante automático y una vez terminado, se sugiere probar que todo fue bien ejecutando lo siguiente en la terminal:
+
+```rust
+rustc -V
+```
+
+Si la respuesta es similar a `rustc 1.92.0` y una fecha, todo ha ido bien.

@@ -1,0 +1,29 @@
+project:
+  type: book
+
+book:
+  title: "Rust en General"
+  author: "Luis Mendoza"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    toc-title: Contenido
+  pdf:
+    documentclass: scrreprt
+    toc-title: Contenido
+  epub:
+    toc: true
+    toc-title: Contenido
+    html-math-method: mathml
+
+
