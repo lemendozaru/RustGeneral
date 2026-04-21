@@ -1,0 +1,166 @@
+# Variables
+
+## Introducción
+
+Exploraremos el concepto de variables en Rust. Son lugares en la memoria de nuestro equipo donde podemos almacenar los valores que queramos. Veamos cómo crear y manipular variables en Rust.
+
+Vamos a crear un nuevo proyecto. Para ello abrimos nuestro navegador de archivos y nos dirigimos a la carpeta en la que queramos guardar nuestros programas. En lo personal, crearé una carpeta que llamaré `codes` y la pondré en la raíz de este proyecto de libro. Eso significa que si se clona este repositorio de *Github*, estarán ahí disponibles.
+
+Una vez creada la carpeta, entramos en ella y la abrimos en una terminal con clic derecho. Ahora escribimos en la terminal
+
+```bash
+cargo new variables
+```
+
+donde `variables` es el nombre del proyecto. Podemos cambiarlo por el que deseemos. Una vez creado, veremos que se generó una carpeta con el nombre que elegimos. Si entramos en ella encontraremos otra llamada `src` y un archivo llamado `Cargo.toml`. Entramos a dicha carpeta y veremos otro archivo, `main.rs`. A este lo abrimos con nuestro IDE, dándonos cuenta que es el clásico "Hola, Mundo".
+
+Este archivo que hemos abierto contiene la función principal, la cual es el punto de arranque de un programa Rust. Al menos en los primeros programas, escribiremos todo el código dentro de este archivo.
+
+Ahora bien, veamos cómo ejecutar código Rust. Nos aseguramos de estar dentro de la carpeta `src` (en la terminal) y simplemente ejecutamos
+
+```bash
+cargo run
+```
+
+Debería aparecer en la misma terminal el saludo `Hello, world!`.
+
+Bien, vamos a modificar este archivo.
+
+## Declarando variables
+
+Las variables se crean con la palabra clave `let` y no es necesario declarar el tipo de dato que contendrá. Vamos a crear una llamada `valor` y la imprimiremos.
+
+```rust
+fn main() {
+    let valor = 9;
+    println!("El valor es {}", valor);
+}
+```
+
+### Las variables son inmutables
+
+En Rust tenemos que las variables son inmutables por defecto. Esto significa que no podemos cambiar sus valores una vez que han sido asignados. Esto es así por razones de optimización. Si deseamos hacer un cambio en el valor de una variable, debemos volverla mutable, utilizando la palabra clave `mut`:
+
+```rust
+fn main() {
+    let mut valor = 9;
+    // Ya podemos cambiar el valor
+    valor = 10;
+    println!("El valor es {}", valor);
+}
+```
+
+### Sombreando
+
+Otra manera de poder cambiar los valores de una variable es "sombrearla", esto es, volver a declararla:
+
+```rust
+fn main() {
+    let valor = 9;
+    let valor = valor + 9;
+    println!("El valor es {}", valor);
+}
+```
+
+La inmutabilidad tiene como beneficios la optimización y rendimiento del programa, ya que Rust sabe cuáles variables acomodar en locaciones de la memoria que serán de solo lectura, agilizando el proceso de acceso a la información.
+
+## Tipos de datos
+
+Podemos clasificar los tipos de datos soportados por Rust en escalares y compuestos. Los primeros se dividen a su vez en:
+
+- Enteros
+- Flotantes
+- Booleanos
+- Caracteres
+
+Mientras que los compuestos son las **tuplas** y los **arreglos**.
+
+### Enteros
+
+Los enteros en Rust incluyen los enteros de 8, 16, 32 y 64-bits. Cada uno de estos tipos puede ser firmado o no. Un entero firmado de 8-bits puede manejar valores desde `-128` hasta `+127`; mientras que su contraparte sin firma abarca desde `0` hasta `255`. Es muy recomendable que elijamos bien el tipo de entero a utilizar, ya que esto puede ahorrar bastante memoria de ejecución. Por ejemplo, si sabemos que nuestro entero no excederá 255, bien podemos usar un entero de 8-bits.
+
+### Flotantes
+
+Rust tiene dos tipos de números de punto flotante: **f32** (32-bits) y **f64** (64-bits), siendo este último el tipo flotante por defecto.
+
+### Especificando el tipo
+
+Si bien Rust puede inferir el tipo de dato almacenado en la variable, se considera buena práctica declararlo junto con la variable por rendimiento y legibilidad. Por ejemplo, podríamos declarar una variable que valdrá `100` mediante un entero de 8-bits:
+
+```rust
+let valor: i8 = 100;
+```
+
+### Arreglos
+
+Son una colección de valores del mismo tipo de dato y tienen un tamaño fijo. Se declaran y usan como sigue:
+
+```rust
+fn main() {
+    // Creamos el arreglo
+    let numeros = [1, 2, 3, 4, 5];
+    // Imprimimos un elemento del arreglo
+    println!("Elemento en el índice 0: {}", numeros[0]);
+}
+```
+
+### Tuplas
+
+Son una colección de valores de diferentes tipos de dato y se utilizan para agrupar conjuntos de valores relacionados. Veamos un ejemplo de cómo declarar y usar una tupla:
+
+```rust
+fn main() {
+    // Declaramos una tupla
+    let persona = ("Alicia", 30, 5.4);
+    // Imprimimos la tupla a conveniencia
+    println!("Nombre: {}", persona.0);
+    println!("Edad: {}", persona.1);
+}
+```
+
+### Constantes
+
+Son valores que nunca cambian. Se declaran usando la palabra clave `const` y siempre debe especificarse el tipo. Normalmente se nombran utilizando solo mayúsculas, por convención.
+
+```rust
+fn main() {
+// Declaramos una constante
+    const PI: f32 = 3.14;
+    // Imprimimos la constante
+    println!("Valor de PI: {}", PI)
+}
+```
+
+Aunque parezca que las variables inmutables y las constantes son iguales, es importante mencionar que las segundas no se pueden sombrear y no son compatibles con la palabra reservada `mut`.
+
+### Cadenas de caracteres
+
+En Rust las cadenas son más complejas que los tipos numéricos. Vienen en dos formas principales: `&str` (*slices* o cortes) y `String`. La diferencia está en la flexibilidad y el modelo de propiedad.
+
+Los cortes son vistas inmutables dentro de datos de cadenas. Son incluso usadas para referenciar datos de cadenas de forma eficiente sin tener la propiedad de los datos reales. Por ejemplo, `saludo` en el siguiente código es un corte de cadena haciendo referencia a la frase estática "Hola, mundo". Está programada de manera fija y es inmutable.
+
+```rust
+fn main() {
+    let saludo: &str = "Hola, mundo";
+    println!("{}", saludo);
+}
+```
+
+Algunas veces podemos ver declaraciones simples como:
+
+```rust
+let nombre = "Juan";
+```
+
+Esto funciona ya que `nombre` está implícitamente asignada como tipo `&str` por defecto, debido a que se declara usando comillas dobles.
+
+Por otro lado, el tipo `String` sí es mutable y se le puede ir agregando texto a la frase. Por ello, hay que usarla cuando necesitemos editar nuestras cadenas de texto.
+
+### Ejercicio
+
+Escribir un programa que almacene el nombre de una persona y su edad actual. Luego, calcule la edad de la persona en el futuro usando una constante para el número de años en el futuro para al final imprimir la edad calculada.
+
+
+
+
+
