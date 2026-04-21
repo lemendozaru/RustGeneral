@@ -9,3 +9,5 @@ rustc -V
 ```
 
 Si la respuesta es similar a `rustc 1.92.0` y una fecha, todo ha ido bien.
+
+No se sugiere algún IDE, por lo que se es libre de utilizar el que se desee. En varios cursos recomiendan *VSCode*, *NeoVim* o *Emacs*. En este curso se estará utilizando *Kate*, por ligereza y costumbre. Algunos pasos van a ser ligeramente diferentes por ello.
