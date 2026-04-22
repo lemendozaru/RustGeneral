@@ -160,6 +160,30 @@ Por otro lado, el tipo `String` sí es mutable y se le puede ir agregando texto 
 
 Escribir un programa que almacene el nombre de una persona y su edad actual. Luego, calcule la edad de la persona en el futuro usando una constante para el número de años en el futuro para al final imprimir la edad calculada.
 
+### Solución
+
+```rust
+fn main() {
+    // Variable para el nombre
+
+    let nombre = "Juan";
+
+    // Variable para la edad
+    let mut edad: i8 = 21;
+
+    // Constante para los años
+    const PLAZO: i8 = 6;
+
+    // Calcula la edad
+    edad += PLAZO;
+
+    // Edad calculada
+    println!("En {} años, {} tendrá {} años", PLAZO, nombre, edad);
+}
+```
+
+
+
 
 
 

@@ -9,6 +9,7 @@ book:
     - intro.qmd
     - summary.qmd
     - variables.qmd
+    - controlFlujo.qmd
     - references.qmd
 
 bibliography: references.bib

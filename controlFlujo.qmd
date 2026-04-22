@@ -1,0 +1,29 @@
+# Control de flujo
+
+En este capítulo exploraremos algunas sentencias de control de flujo, tales como las condicionales y los bucles.
+
+## Condicional `if`
+
+Esta sentencia nos permite ejecutar código basados en ciertas condiciones. Consideremos un escenario en el que debemos imprimir diferentes mensajes con base en si un número es divisible por ciertos valores.
+
+- Si un número es divisible por 5 y 3, imprime "TriQunit".
+- Si es divisible por 6 y 4, imprime "HezaQuad".
+- De otra manera, imprime "Solo otro número".
+
+Escribamos los escenarios:
+
+```rust
+fn main() {
+    let numero = 30;
+
+    if numero % 5 == 0 && numero % 3 == 0 {
+        println!("{} es un TriQunit", numero);
+    } else if numero % 6 == 0 && numero % 4 == 0 {
+        println!("{} es un HexaQuad", numero);
+}   else {
+    println!("{} es solo otro número", numero);
+}
+}
+```
+
+
